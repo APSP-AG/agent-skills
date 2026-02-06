@@ -19,7 +19,7 @@ scripts/validate_skills.py
 Use a direct GitHub tree URL to a skill folder:
 
 ```bash
-npx skills add https://github.com/APSP-AG/agent-skills/tree/main/skills/wsl-windows-embedded-debug
+npx skills add https://github.com/APSP-AG/agent-skills/tree/main/skills/wsl-embedded-debugging
 ```
 
 ## Validate locally
@@ -31,4 +31,4 @@ python3 scripts/validate_skills.py
 
 ## Available skills
 
-- `skills/wsl-windows-embedded-debug` — run Windows embedded flash/debug commands from WSL and capture bounded logs.
+- `skills/wsl-embedded-debugging` — run Windows embedded flash/debug commands from WSL and capture bounded logs.

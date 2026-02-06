@@ -1,9 +1,9 @@
 ---
-name: wsl-windows-embedded-debug
+name: wsl-embedded-debugging
 description: Run embedded build/flash/debug workflows from WSL by invoking Windows executables that own USB/JTAG access (for example `cargo.exe`, `probe-rs.exe`, or `openocd.exe`). Use when an agent must reproduce firmware behavior on hardware, flash an MCU, collect bounded runtime logs, or debug probe connectivity from a WSL workspace.
 ---
 
-# WSL Windows Embedded Debug
+# WSL Embedded Debugging
 
 ## Overview
 

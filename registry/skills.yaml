@@ -1,7 +1,7 @@
 version: 1
 skills:
-  - id: wsl-windows-embedded-debug
-    path: skills/wsl-windows-embedded-debug
+  - id: wsl-embedded-debugging
+    path: skills/wsl-embedded-debugging
     owner: apsp-ag
     status: stable
     tags:

@@ -1,4 +1,4 @@
 interface:
-  display_name: "WSL Windows Embedded Debug"
+  display_name: "WSL Embedded Debugging"
   short_description: "Run Windows embedded flash/debug commands from WSL"
   default_prompt: "Use this skill to run embedded flash/debug commands through Windows toolchains from WSL and capture bounded live logs for troubleshooting."
