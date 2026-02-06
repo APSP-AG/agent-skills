@@ -22,31 +22,31 @@ Use Windows-side toolchains from WSL so code stays in the Linux workspace while 
 Use this wrapper as the default execution path:
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Capture logs to a file for later inspection:
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/fw-run.log -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/embedded-run.log -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Use log-only mode when log frequency is high and terminal/context noise is expensive:
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/fw-run.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/embedded-run.log --log-only -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Use artifacts mode when you want reproducible run bundles (`run.log` + `run.json`):
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 20 --artifacts-dir /tmp/fw-run --log-only --tail 40 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 20 --artifacts-dir /tmp/embedded-run --log-only --tail 40 -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Run environment checks before long debugging loops:
 
 ```bash
-./scripts/run_windows_embedded.sh --check -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --check -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Pass any Windows executable command after `--` (for example `probe-rs.exe run ...`, `openocd.exe ...`, or vendor CLI tools).

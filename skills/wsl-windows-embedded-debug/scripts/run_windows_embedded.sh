@@ -10,11 +10,11 @@ Usage:
   run_windows_embedded.sh [--check]
 
 Examples:
-  run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
-  run_windows_embedded.sh --timeout 20 --log /tmp/fw.log -- probe-rs.exe run --chip STM32U031R8Tx target\thumbv6m-none-eabi\release\fw-lse-submin-mb-stm32
-  run_windows_embedded.sh --timeout 30 --log /tmp/fw.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
-  run_windows_embedded.sh --timeout 30 --artifacts-dir /tmp/fw-run --log-only --tail 30 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
-  run_windows_embedded.sh --check -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+  run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin <firmware-bin> --release
+  run_windows_embedded.sh --timeout 20 --log /tmp/embedded.log -- probe-rs.exe run --chip <chip-name> <elf-path>
+  run_windows_embedded.sh --timeout 30 --log /tmp/embedded.log --log-only -- cargo.exe run --bin <firmware-bin> --release
+  run_windows_embedded.sh --timeout 30 --artifacts-dir /tmp/embedded-run --log-only --tail 30 -- cargo.exe run --bin <firmware-bin> --release
+  run_windows_embedded.sh --check -- cargo.exe run --bin <firmware-bin> --release
 EOF
 }
 

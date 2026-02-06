@@ -11,31 +11,31 @@
 Use this baseline first:
 
 ```bash
-timeout 15s cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+timeout 15s cargo.exe run --bin <firmware-bin> --release
 ```
 
 Prefer the wrapper script for repeatable runs:
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Use log-only mode when firmware logs are very verbose:
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 15 --log /tmp/fw.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 15 --log /tmp/embedded.log --log-only -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Use artifacts mode for reproducible debugging bundles:
 
 ```bash
-./scripts/run_windows_embedded.sh --timeout 15 --artifacts-dir /tmp/fw-run --log-only --tail 40 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --timeout 15 --artifacts-dir /tmp/embedded-run --log-only --tail 40 -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 Use preflight checks before the first run:
 
 ```bash
-./scripts/run_windows_embedded.sh --check -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+./scripts/run_windows_embedded.sh --check -- cargo.exe run --bin <firmware-bin> --release
 ```
 
 ## Error Patterns
