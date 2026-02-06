@@ -5,6 +5,18 @@
 1. Run from the firmware project directory in WSL.
 2. Use Windows executables (`*.exe`) for steps that require USB/JTAG access.
 3. Keep Windows-side toolchains installed (for example Rust, probe-rs, OpenOCD, vendor tools).
+4. Run Codex with permissions that allow launching `*.exe` from WSL paths.
+
+## Sandbox + Host Execution Requirements
+
+- Prefer full-access sandboxing for this workflow because flash/debug commands need host USB tool access.
+- If commands fail with policy/sandbox errors (for example blocked command execution), switch to a less restricted execution mode before retrying.
+- Confirm executables are callable from WSL:
+  - `cargo.exe --version`
+  - `probe-rs.exe --version`
+- If tool names are not found, call absolute Windows paths under `/mnt/c/...`.
+- Convert file paths when required by Windows-native tools:
+  - `wslpath -w <linux-path>`
 
 ## Known-Good Command Pattern
 
@@ -44,6 +56,12 @@ Use preflight checks before the first run:
 
 - Install Rust on Windows.
 - Ensure Windows Cargo path is available from WSL (for example via `/mnt/c/Users/<user>/.cargo/bin` in PATH).
+- Or call Cargo directly by full path (for example `/mnt/c/Users/<user>/.cargo/bin/cargo.exe`).
+
+### Command blocked by sandbox/policy
+
+- Use a Codex execution mode that allows running host binaries (`*.exe`) from WSL.
+- Re-run `./scripts/run_windows_embedded.sh --check -- cargo.exe --version` after switching modes.
 
 ### Probe/flash access errors
 

@@ -9,6 +9,20 @@ description: Run embedded build/flash/debug workflows from WSL by invoking Windo
 
 Use Windows-side toolchains from WSL so code stays in the Linux workspace while USB-capable flashing and runtime logging happen through Windows executables.
 
+## Codex Sandbox and Setup Requirements
+
+Require an execution mode that can launch Windows executables from WSL:
+
+- Prefer full-access sandboxing (for example `danger-full-access`) when running flash/debug commands from this skill.
+- If sandbox policy blocks `*.exe` or `/mnt/c/...` binaries, stop and switch to a less restricted mode before continuing.
+
+Require Windows tools to be callable from the WSL shell:
+
+- Invoke by name when PATH bridging is configured (`cargo.exe`, `probe-rs.exe`, `openocd.exe`).
+- Invoke by explicit path when PATH bridging is not configured (for example `/mnt/c/Users/<user>/.cargo/bin/cargo.exe`).
+- Verify setup quickly with `cargo.exe --version` and `probe-rs.exe --version`.
+- Use `wslpath -w <linux-path>` when a Windows-native tool requires Windows-style paths.
+
 ## Core Workflow
 
 1. Confirm that the hardware step needs Windows USB access.
