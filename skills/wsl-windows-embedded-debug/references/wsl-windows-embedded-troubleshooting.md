@@ -26,6 +26,18 @@ Use log-only mode when firmware logs are very verbose:
 ./scripts/run_windows_embedded.sh --timeout 15 --log /tmp/fw.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
 ```
 
+Use artifacts mode for reproducible debugging bundles:
+
+```bash
+./scripts/run_windows_embedded.sh --timeout 15 --artifacts-dir /tmp/fw-run --log-only --tail 40 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+```
+
+Use preflight checks before the first run:
+
+```bash
+./scripts/run_windows_embedded.sh --check -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+```
+
 ## Error Patterns
 
 ### `cargo.exe: command not found`
@@ -50,8 +62,10 @@ Use log-only mode when firmware logs are very verbose:
 1. Start with short timeout (10–20 seconds) to verify flashing and boot.
 2. Capture logs to a file with `--log` for comparisons across runs.
 3. Switch to `--log --log-only` when terminal noise is high and then inspect with `tail`/`rg`.
-4. Change one parameter at a time (timeout, feature flags, bin target).
-5. Preserve the exact command in notes for reproducibility.
+4. Add `--tail N` for compact terminal previews while keeping full logs in files.
+5. Add `--artifacts-dir` to keep `run.log` and `run.json` per run.
+6. Change one parameter at a time (timeout, feature flags, bin target).
+7. Preserve the exact command in notes for reproducibility.
 
 ## Alternative Architectures to Explore
 

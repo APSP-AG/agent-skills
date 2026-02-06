@@ -37,6 +37,18 @@ Use log-only mode when log frequency is high and terminal/context noise is expen
 ./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/fw-run.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
 ```
 
+Use artifacts mode when you want reproducible run bundles (`run.log` + `run.json`):
+
+```bash
+./scripts/run_windows_embedded.sh --timeout 20 --artifacts-dir /tmp/fw-run --log-only --tail 40 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+```
+
+Run environment checks before long debugging loops:
+
+```bash
+./scripts/run_windows_embedded.sh --check -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+```
+
 Pass any Windows executable command after `--` (for example `probe-rs.exe run ...`, `openocd.exe ...`, or vendor CLI tools).
 
 ## Choose Output Mode
@@ -46,6 +58,8 @@ Agents should intentionally choose output mode based on expected verbosity and r
 - Use raw terminal output for short, low-frequency logs where live feedback is valuable.
 - Use `--log` for balanced runs that need both live stream and saved artifacts.
 - Use `--log --log-only` for noisy/long sessions to avoid blowing context while preserving complete logs for targeted inspection.
+- Use `--artifacts-dir` when reproducibility matters; this saves both `run.log` and `run.json` metadata.
+- Use `--tail N` with `--log-only` when you still need a compact end-of-run preview.
 
 `--log-only` is an intended first-class option, not a workaround.
 
