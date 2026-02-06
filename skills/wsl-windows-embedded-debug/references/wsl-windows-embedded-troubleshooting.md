@@ -20,6 +20,12 @@ Prefer the wrapper script for repeatable runs:
 ./scripts/run_windows_embedded.sh --timeout 15 -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
 ```
 
+Use log-only mode when firmware logs are very verbose:
+
+```bash
+./scripts/run_windows_embedded.sh --timeout 15 --log /tmp/fw.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+```
+
 ## Error Patterns
 
 ### `cargo.exe: command not found`
@@ -43,8 +49,9 @@ Prefer the wrapper script for repeatable runs:
 
 1. Start with short timeout (10–20 seconds) to verify flashing and boot.
 2. Capture logs to a file with `--log` for comparisons across runs.
-3. Change one parameter at a time (timeout, feature flags, bin target).
-4. Preserve the exact command in notes for reproducibility.
+3. Switch to `--log --log-only` when terminal noise is high and then inspect with `tail`/`rg`.
+4. Change one parameter at a time (timeout, feature flags, bin target).
+5. Preserve the exact command in notes for reproducibility.
 
 ## Alternative Architectures to Explore
 

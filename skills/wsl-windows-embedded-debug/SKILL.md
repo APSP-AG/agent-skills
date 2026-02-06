@@ -31,7 +31,23 @@ Capture logs to a file for later inspection:
 ./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/fw-run.log -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
 ```
 
+Use log-only mode when log frequency is high and terminal/context noise is expensive:
+
+```bash
+./scripts/run_windows_embedded.sh --timeout 20 --log /tmp/fw-run.log --log-only -- cargo.exe run --bin fw-lse-submin-mb-stm32 --release
+```
+
 Pass any Windows executable command after `--` (for example `probe-rs.exe run ...`, `openocd.exe ...`, or vendor CLI tools).
+
+## Choose Output Mode
+
+Agents should intentionally choose output mode based on expected verbosity and run duration:
+
+- Use raw terminal output for short, low-frequency logs where live feedback is valuable.
+- Use `--log` for balanced runs that need both live stream and saved artifacts.
+- Use `--log --log-only` for noisy/long sessions to avoid blowing context while preserving complete logs for targeted inspection.
+
+`--log-only` is an intended first-class option, not a workaround.
 
 ## Interpret Exit Codes
 
