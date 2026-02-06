@@ -1,0 +1,14 @@
+version: 1
+skills:
+  - id: wsl-windows-embedded-debug
+    path: skills/wsl-windows-embedded-debug
+    owner: apsp-ag
+    status: stable
+    tags:
+      - embedded
+      - firmware
+      - wsl
+      - windows
+      - debug
+    updated_at: "2026-02-06"
+    summary: Run Windows-side embedded flash/debug commands from WSL with bounded log capture.

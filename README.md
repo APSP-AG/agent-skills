@@ -2,12 +2,31 @@
 
 Reusable skills for coding agents.
 
+## Repository layout
+
+```text
+skills/<skill-slug>/...
+registry/skills.yaml
+scripts/validate_skills.py
+```
+
+- Keep each skill self-contained under `skills/<skill-slug>`.
+- Keep install URLs stable by never renaming published skill paths.
+- Track metadata and discovery fields in `registry/skills.yaml`.
+
 ## Install a skill
 
 Use a direct GitHub tree URL to a skill folder:
 
 ```bash
 npx skills add https://github.com/APSP-AG/agent-skills/tree/main/skills/wsl-windows-embedded-debug
+```
+
+## Validate locally
+
+```bash
+python3 -m pip install pyyaml
+python3 scripts/validate_skills.py
 ```
 
 ## Available skills
