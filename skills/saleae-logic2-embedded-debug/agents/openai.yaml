@@ -1,0 +1,4 @@
+interface:
+  display_name: "Saleae Logic 2 Embedded Debug"
+  short_description: "Saleae Logic 2 automation for embedded debugging"
+  default_prompt: "Use this skill to author and run Saleae Logic 2 automation workflows and extensions for embedded projects with connected hardware."

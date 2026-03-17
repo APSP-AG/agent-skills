@@ -32,3 +32,4 @@ python3 scripts/validate_skills.py
 ## Available skills
 
 - `skills/wsl-embedded-debugging` — run Windows embedded flash/debug commands from WSL and capture bounded logs.
+- `skills/saleae-logic2-embedded-debug` — author and run Saleae Logic 2 automation workflows and extensions for embedded debugging.

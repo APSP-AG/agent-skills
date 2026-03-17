@@ -12,3 +12,15 @@ skills:
       - debug
     updated_at: "2026-02-06"
     summary: Run Windows-side embedded flash/debug commands from WSL with bounded log capture.
+  - id: saleae-logic2-embedded-debug
+    path: skills/saleae-logic2-embedded-debug
+    owner: apsp-ag
+    status: alpha
+    tags:
+      - embedded
+      - saleae
+      - logic-analyzer
+      - debug
+      - automation
+    updated_at: "2026-03-17"
+    summary: Author and run Saleae Logic 2 automation workflows and extensions for embedded projects with connected hardware.
